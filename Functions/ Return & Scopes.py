@@ -56,3 +56,57 @@ def convert_txt(txt_user):
         convert_result = convert_result.replace(vowel, vowel.capitalize())
     return convert_result 
     #output : WElcOmE At COdEzIllA PythOn COUrsE WE ArE HAppy TO HAvE YOU HErE
+
+# explain for mr.mohamed gouda
+#2. Make a function that returns the maximum even number in a list
+
+def max_even_number(numbers):
+    even_nums = [number for number in numbers if number%2 == 0]
+    max_num = max(even_nums)
+    return max_num
+
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+max_even = max_even_number(numbers)
+print(max_even)
+
+
+##########################################################
+
+# 3. Make a function that returns the minimum odd number in a list
+
+def min_odd_number(numbers):
+    min_num = min([number for number in numbers if number%2 != 0])
+    return min_num
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+min_odd = min_odd_number(numbers)
+print(min_odd)
+
+##########################################################
+
+# 4. Make a function that returns the number of positive numbers in a list
+
+def count_positive_numbers(numbers):
+    return len([number for number in numbers if number > 0])
+
+
+numbers = [1, 2, 3, -4, -5, -6, -7, 8, 9]
+
+count_positive = count_positive_numbers(numbers)
+print(count_positive)
+
+
+
+##########################################################
+# 5. Make a function that returns the number of negative odd numbers in a list
+
+def count_negative_odd_numbers(numbers):
+    return len([number for number in numbers if (number < 0) and (number%2 != 0)])
+
+numbers = [1, 2, -3, -4, -5, -6, -7, 8, 9]
+
+count_negative_odd = count_negative_odd_numbers(numbers)
+print(count_negative_odd)
