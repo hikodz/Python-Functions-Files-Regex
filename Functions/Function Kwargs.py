@@ -28,6 +28,28 @@ print(sum_special(number_test, only_even=True))     #output : 10
 print(sum_special(number_test, only_odd=True))      #output : 1
 print(sum_special(number_test, olny_positive=True)) #output : 33
 print(sum_special(number_test, only_negative=True)) #output : -22
+# Method ---2----id3m----special method------------------------------
+def special_sum(numbers, only_even=False, only_odd=False, only_positive=False, only_negative=False):
+    total = 0
+    for num in numbers:
+        if only_even and num % 2!= 0:
+            continue
+        if only_odd and num % 2 == 0:
+            continue
+        if only_positive and num < 0:
+            continue
+        if only_negative and num > 0:
+            continue
+        total += num
+    return total
+
+numbers = [1, 2, 3, -4, -5, -6, -7, 8, 9, 10]
+
+print(special_sum(numbers))                     
+print(special_sum(numbers, only_even=True))     
+print(special_sum(numbers, only_odd=True))     
+print(special_sum(numbers, only_positive=True)) 
+print(special_sum(numbers, only_negative=True)) 
 
 ###################################################################################
 # Make a function that converts a list containing numbers as string or float to a list
