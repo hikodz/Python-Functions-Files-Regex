@@ -1,5 +1,5 @@
 #Section 12: Python Functions, Files & Regex
-# Lesson 5 - Function *args Project :
+# Lesson 6 - Function Kwargs Project :
 #Make a special sum function that can sum all numbers, only even numbers,
 #  only odd numbers, only positive numbers, and only negative numbers:
 number_test = [1, 2, 3, -4, -5, -6, -7, 8, 9, 10]
