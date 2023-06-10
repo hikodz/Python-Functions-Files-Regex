@@ -22,7 +22,6 @@ def random_password(lenth=8, complex=False):
         password_list = list(password_user)
         random.shuffle(password_list)
         password_user = ''.join(password_list)
-        return password_user
     elif complex==False :
         while num_lower<(lenth // 4):
             password_user+=random.choice(string.ascii_lowercase)
@@ -38,7 +37,6 @@ def random_password(lenth=8, complex=False):
         password_list = list(password_user)
         random.shuffle(password_list)
         password_user = ''.join(password_list)
-        return password_user
+    return password_user
 
-
-print(random_password(20, complex=True))
+print(random_password(12, complex=True))
