@@ -151,16 +151,17 @@ def randomPassword(lenth=8, complex=False):
     passwordUser = []
     if lenth < 8:
         print('The number of password content will be very low')
-    elif complex :
-        passwordUser.extend(sample(punctuation, (lenth//2)+1))
+        lenth = 8
+    if complex :
+        passwordUser.extend(sample(punctuation, (lenth//2)+(lenth%2)))
         while len(passwordUser) < lenth :
             passwordUser.extend([choice(ascii_lowercase), choice(ascii_uppercase), choice(digits)])
     elif complex == False :
         while len(passwordUser) < lenth:
             passwordUser.extend([choice(ascii_lowercase), choice(ascii_uppercase), choice(digits), choice(punctuation)])
-    while len(passwordUser) > lenth:
-        passwordUser.pop()
+    if len(passwordUser)>lenth:
+        del passwordUser[(lenth-len(passwordUser)):]
     shuffle(passwordUser)
     passwordUser = ''.join(passwordUser)
-    return passwordUser
-print(randomPassword(10, complex=True))
+    return f'your password is: {passwordUser}'
+print(randomPassword(30, complex=True))
