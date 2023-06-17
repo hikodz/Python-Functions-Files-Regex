@@ -114,7 +114,12 @@ def Review_random_word():
 
 def Test_yourself():
     word, definition = choice(list(WORDS.items()))
-    print(f"difinition: {definition}")
+    
+    sys.stdout.write(f"difinition: {definition}")
+    sys.stdout.flush()
+    time.sleep(5)
+    sys.stdout.write('\r' + ' ' * len(f"difinition: {definition}") + '\r')
+    sys.stdout.flush()
     
     number_attempt = 3
     while True:
