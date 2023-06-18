@@ -16,7 +16,7 @@ def intro_task_maneger():
             elif input_choice ==3:
                 view_taks()
             elif input_choice==4:
-                print("Thank for use programe (TASK MENEGER) have a nice day!!🫡")
+                show_result()
                 break
         
         except ValueError:
@@ -25,11 +25,14 @@ def intro_task_maneger():
             print('Invalid choice, Please enter a number between 1 and 4 ⭕️')
 
 def add_task():
-    
-    input_add_task = input("Please enter your task 🔖: ")
+    input_add_task = input("Please enter your task for back enter 0 🔖: ")
+    if input_add_task=='0':
+        return
    
     while True:
-        input_add_date = input("Please enter task date (yyyy-mm-dd)⌚️: ")
+        input_add_date = input("Please enter task date (yyyy-mm-dd)⌚️ for back enter 0: ")
+        if input_add_date =='0':
+            return
         try:
             date_object = datetime.strptime(input_add_date, "%Y-%m-%d")
             input_add_date = date_object.strftime("%Y-%-m-%-d")  # Format date as yyyy-m-d
@@ -39,7 +42,9 @@ def add_task():
     
     while True:
         try:
-            input_time = input("Please enter exact time to complete the task 24-hour time(h:m) ⏰: ")
+            input_time = input("Please enter exact time to complete the task 24-hour time(h:m) ⏰ for back enter 0: ")
+            if input_time=='0':
+                return
             time.strptime(input_time, '%H:%M')
             break
         except ValueError:
@@ -52,6 +57,7 @@ def add_task():
 
 def mark_task_complete():
     try:
+        
         reserved_tasks = [task for task in tasks if task['Status']==False]
         if len(reserved_tasks) > 0:
             
@@ -78,7 +84,22 @@ def view_taks():
     else:
         print("You don't have task for view, Please add task 📝 and try again!!!")
 
+def show_result():
+    if len(tasks) == 0:
+        print('You are lazy today, you did not add any task, you a loser boy 👎👎👎👎')
+        print("Thank 😠😠 for use programe (TASK MENEGER) have a nice day loser boy!!😡😡😡")
+    else:
+        check_task_us = ['complete' for task in tasks if task['Status']== True]
+        if len(tasks) == len(check_task_us):
+            print("Good boy, you finish all task")
+            print("Thank for use programe (TASK MENEGER) have a nice day you are a hero 🫡")
+        else:
+            print("Not bad.Try to complete the remaining task another time today")
+            reserved_tasks = [task for task in tasks if task['Status']==False]
+            for index, task in enumerate(reserved_tasks, 1):
+                print(f"📍{index}. {task['Task'].title()}")
+            print("👆don't forget to complete the tasks 🤭🤭🤭 Thank for use programe (TASK MENEGER)")
 
+        
 
 intro_task_maneger()
-
