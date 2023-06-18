@@ -1,5 +1,5 @@
 from datetime import datetime
-
+import time
 tasks = []
 def intro_task_maneger():
     while True:
@@ -27,15 +27,24 @@ def intro_task_maneger():
 def add_task():
     
     input_add_task = input("Please enter your task 🔖: ")
+   
     while True:
         input_add_date = input("Please enter task date (yyyy-mm-dd)⌚️: ")
         try:
             date_object = datetime.strptime(input_add_date, "%Y-%m-%d")
             input_add_date = date_object.strftime("%Y-%-m-%-d")  # Format date as yyyy-m-d
-            break  
+            break
         except ValueError:
             print("Incorrect data format, please enter a date in (yyyy-mm-dd) 📅")
-    task = {'Task':input_add_task, 'Date':input_add_date, 'Status': False }
+    
+    while True:
+        try:
+            input_time = input("Please enter exact time to complete the task 24-hour time(h:m) ⏰: ")
+            time.strptime(input_time, '%H:%M')
+            break
+        except ValueError:
+            print("Incorrect time format, please enter a time in (h:m) ⏰")
+    task = {'Task':input_add_task, 'Date':input_add_date, 'Time': input_time, 'Status': False }
     tasks.append(task)
     print('Task added to list 🔐')
         
@@ -65,10 +74,11 @@ def view_taks():
     if len(tasks) >0:
         for index, task in enumerate(tasks, 1):
             emoji_status = '🔴' if task['Status']== False else '🟢'
-            print(f"{emoji_status} {index}. {task['Task'].title()} ( {task['Date']}) ")
+            print(f"{emoji_status} {index}. {task['Task'].title()} ({task['Date']}) ({task['Time']}) ")
     else:
         print("You don't have task for view, Please add task 📝 and try again!!!")
 
 
 
 intro_task_maneger()
+
