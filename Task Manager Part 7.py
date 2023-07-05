@@ -66,6 +66,7 @@ print_employees(employees, new_employees, 'Sales')
 
 # dictionary with the words and definitions
 from random import choice
+import sys
 
 WORDS = {
 "Absence": "The lack or unavailability of something orsomeone.",
