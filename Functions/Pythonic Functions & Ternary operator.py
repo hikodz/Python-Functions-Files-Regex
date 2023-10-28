@@ -147,20 +147,20 @@ print_grades("Ahmed Khaled", math=80, english=70, arabic=90, physics=85, chemist
 # Make a function that generate a random password with the following requirements:
 from string import punctuation, ascii_lowercase, ascii_uppercase, digits
 from random import choice, shuffle, sample
-def randomPassword(lenth=8, complex=False):
+def randomPassword(lenght=8, complex=False):
     passwordUser = []
-    if lenth < 8:
+    if lenght < 8:
         print('The number of password content will be very low')
-        lenth = 8
+        lenght = 8
     if complex :
-        passwordUser.extend(sample(punctuation, (lenth//2)+(lenth%2)))
-        while len(passwordUser) < lenth :
+        passwordUser.extend(sample(punctuation, (lenght//2)+(lenght%2)))
+        while len(passwordUser) < lenght :
             passwordUser.extend([choice(ascii_lowercase), choice(ascii_uppercase), choice(digits)])
     elif complex == False :
-        while len(passwordUser) < lenth:
+        while len(passwordUser) < lenght:
             passwordUser.extend([choice(ascii_lowercase), choice(ascii_uppercase), choice(digits), choice(punctuation)])
-    if len(passwordUser)>lenth:
-        del passwordUser[(lenth-len(passwordUser)):]
+    if len(passwordUser)>lenght:
+        del passwordUser[(lenght-len(passwordUser)):]
     shuffle(passwordUser)
     passwordUser = ''.join(passwordUser)
     return f'your password is: {passwordUser}'
